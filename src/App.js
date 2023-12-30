@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter , Routes , Route } from 'react-router-dom';
+import ProductList from './components/ProductList';
+import AddProduct from './components/AddProduct';
+// import LoginForm from './LoginForm';
+// import SignupForm from './SignupForm';
+import Navbar from './components/Navbar';
 
-function App() {
+const App = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if the user is logged in (you should replace this with actual authentication logic)
+    // For simplicity, we use a mock check here
+    const userIsLoggedIn = localStorage.getItem('loggedIn') === 'true';
+    setLoggedIn(userIsLoggedIn);
+  }, []);
+
+  const handleLogin = () => {
+    // Replace this with actual authentication logic
+    localStorage.setItem('loggedIn', 'true');
+    setLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    // Replace this with actual logout logic
+    localStorage.setItem('loggedIn', 'false');
+    setLoggedIn(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Navbar loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />
+
+        {/* <AddProduct /> */}
+        <Routes>
+
+          {/* <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+
+          <Route path="/signup"element={<SignupForm />} /> */}
+            
+          <Route path="/" exact element={<ProductList />} />
+            
+          <Route path="/add" exact element={<AddProduct />} />
+            
+        </Routes>
+        
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
