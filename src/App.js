@@ -8,8 +8,8 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import AddProduct from './components/AddProduct';
-// import LoginForm from './LoginForm';
-// import SignupForm from './SignupForm';
+import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
 import Navbar from './components/Navbar';
 
 const App = () => {
@@ -41,12 +41,11 @@ const App = () => {
       <div>
         <Navbar loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />
 
-        {/* <AddProduct /> */}
         <Routes>
 
-          {/* <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+          <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
 
-          <Route path="/signup"element={<SignupForm />} /> */}
+          <Route path="/signup"element={<SignupForm />} />
             
           <Route path="/" exact element={<ProductList />} />
             
