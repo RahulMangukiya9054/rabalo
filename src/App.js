@@ -1,3 +1,8 @@
+
+import './App.css';
+import LoginPage from './components/LoginForm';
+import Signup from './components/SignupForm';
+
 // src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
@@ -29,7 +34,9 @@ const App = () => {
     setLoggedIn(false);
   };
 
+
   return (
+
     <BrowserRouter>
       <div>
         <Navbar loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />
@@ -49,6 +56,7 @@ const App = () => {
         
       </div>
     </BrowserRouter>
+
   );
 };
 
